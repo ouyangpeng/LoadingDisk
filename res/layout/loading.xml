@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#382517"
+    tools:context=".MainActivity" 
+    >
+
+   <RelativeLayout
+        android:id="@+id/loading_disc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loading_disc"   
+        android:paddingLeft="100dp"
+        >
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="380dip" >
+
+        <TextView
+            android:id="@+id/loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:text="读碟中,请稍后 . . ."
+            android:textSize="20sp" />
+    </RelativeLayout>
+</RelativeLayout>
