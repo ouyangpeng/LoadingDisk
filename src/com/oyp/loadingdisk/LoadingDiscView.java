@@ -39,8 +39,11 @@ public class LoadingDiscView extends View {
 		private Paint mypaint = null;
 		/**图像缩放比例*/
 		private float m_scale =1.0f;
+		/**图像旋转的速度*/
 		private float m_disc_rot_speed = 0;
-		
+		/**图像旋转的状态*/
+		private int m_state_play = 1;
+		/**图像旋转的最大速度*/
 		private float m_disc_max = 20f;
 
 		public void setRefreshHandle(RefreshHandle refreshHandle) {
@@ -91,13 +94,14 @@ public class LoadingDiscView extends View {
 		}
 
 		public void update() {
-			if (m_disc_rot_speed > 0.01) {
-				if (m_disc_rot_speed < m_disc_max) {
-					m_disc_rot_speed += (m_disc_max + 0.5f - m_disc_rot_speed) / 30;
-				} else if (m_disc_rot_speed > 0.1) {
-					m_disc_rot_speed -= (m_disc_rot_speed) / 40;
+			if (m_disc_rot_speed > 0.01 || m_state_play == 1){
+				if (m_state_play == 1 && m_disc_rot_speed<m_disc_max){
+					m_disc_rot_speed += (m_disc_max+0.5f-m_disc_rot_speed)/30;
 				}
-				m_matrix_disc.postRotate(m_disc_rot_speed, 123 * m_scale, 146 * m_scale);//设置旋转角度
+				else if (m_disc_rot_speed>0.1){
+					m_disc_rot_speed -= (m_disc_rot_speed)/40;
+				}
+				m_matrix_disc .postRotate(m_disc_rot_speed, 123*m_scale, 146*m_scale);
 				invalidate();
 			}
 		}
